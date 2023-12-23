@@ -1,0 +1,55 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block title %} &mdash; {{ title|title }}{% endblock %}
+
+{% block content %}
+<!-- Page Content -->
+    <!-- Items Starts Here -->
+    <div class="featured-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <div class="section-heading">
+                {% if category.name %}
+                    <h1>{{category.name}}</h1>
+                {% else %}
+                    <h1>Featured Items</h1>
+                {% endif %}
+            </div>
+          </div>
+                {% include 'includes/inc_category_menu.html' %}
+        </div>
+      </div>
+    </div>
+
+    <div class="featured container no-gutter">
+
+        <div class="row posts">
+
+
+            {% for prod in prods %}
+
+            <div id="{{ prod.pk }}" class="item new col-md-4">
+              <a href="{% url 'products:product' prod.pk %}">
+                <div class="featured-item">
+                    {% if prod.image %}
+                         <img src="{{ prod.image.url }}" alt="{{ prod.name }}">
+                    {% else %}
+                        <img src="{% static 'assets/images/default.png' %}" alt="Нет Картинки">
+                    {% endif %}
+                  <h4>{{ prod.name }}</h4>
+                  <h6>${{ prod.price }}</h6>
+                </div>
+              </a>
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+    </div>
+        z
+    <!-- Featred Page Ends Here -->
+{% endblock %}

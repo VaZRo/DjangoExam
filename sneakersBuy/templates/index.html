@@ -1,0 +1,72 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block title %} &mdash; {{ title|title }}{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/assets/css/flex-slider.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="caption">
+              <h2>SneakersBuy Shop</h2>
+              <p>Explore a World of Sneaker Elegance at SneakersBuy:<strong>Elevate Your Fashion, Comfort, and Confidence with Every Step.</strong>Unleash Your Style, Find Your Perfect Pair!
+              <div class="main-button">
+                <a href="#">Order Now!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Featured Starts Here -->
+    <div class="featured-items">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>Featured Items</h1>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="owl-carousel owl-theme">
+            {% for prod in prods %}
+              <a href="{% url 'products:product' prod.pk %}">
+                <div class="featured-item">
+                  {% if prod.image %}
+                    <img src ="{{ prod.image.url }}"
+                         alt="{{ prod.name }}">
+                    {% else %}
+                    <img src ="{% static 'assets/images/default.png' %}"
+                         alt="нет картинки">
+                  {% endif %}
+                  <h4>{{ prod.name }}</h4>
+                  <h6>{{ prod.price }}</h6>
+                </div>
+              </a>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Featred Ends Here -->
+
+{% endblock %}
+
+{% block js %}
+      <script src="{% static '/assets/js/isotope.js' %}"></script>
+      <script src="{% static '/assets/js/flex-slider.js' %}"></script>
+{% endblock %}
+

@@ -1,0 +1,61 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block title %} &mdash; {{ title|title }}{% endblock %}
+
+{% block content %}
+
+    <!-- Page Content -->
+    <!-- About Page Starts Here -->
+    <div class="about-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h1>About Us</h1>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="left-image">
+                        <img src="{% static 'assets/images/about-us.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="right-content">
+                        <h2>About Us</h2>
+                        <p>
+                            Welcome to SneakersBuy, where fashion meets comfort, and style takes a bold step forward.
+                            Our passion for sneakers goes beyond the trends; it's a commitment to providing footwear
+                            that complements your lifestyle and makes every step an expression of your unique
+                            personality.
+                        </p>
+
+                        <h3>Our Mission</h3>
+                        <p>
+                            At SneakersBuy, we believe in empowering individuals to walk with confidence and embrace
+                            their personal style. Our mission is to curate a diverse collection of sneakers that caters
+                            to different tastes, preferences, and occasions. Whether you're chasing the latest trends or
+                            seeking timeless classics, SneakersBuy is your go-to destination for footwear that speaks
+                            volumes.
+                        </p>
+                        <h3>Customer Experience</h3>
+                        <p>
+                            Your satisfaction is at the heart of everything we do. From an easy-to-navigate online
+                            shopping experience to dedicated customer support, we strive to make your journey with
+                            SneakersBuy enjoyable and seamless. We value your feedback and are continuously working to
+                            enhance our services to exceed your expectations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- About Page Ends Here -->
+
+
+
+
+{% endblock %}
+

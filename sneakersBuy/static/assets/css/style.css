@@ -1,0 +1,49 @@
+.btn.active a {
+    color: #756f6f;
+}
+
+.btn.btn-round:hover{
+    color: #756f6f;
+}
+
+#pre-header .blue-menu{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#pre-header span{
+    padding: 0;
+}
+
+#pre-header .price{
+    display: flex;
+    align-items:center;
+}
+
+#pre-header a{
+    display:flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#pre-header .blue-menu .basket{
+    justify-content: flex-end;
+    align-items: flex-start;
+    background: url("../images/basket.png") no-repeat;
+    width: 28px;
+    height: 26px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#pre-header .basket span{
+     width: 16px;
+     height: 16px;
+     font-size: 13px;
+     padding: 0;
+     text-align: center;
+     background-color: #756f6f;
+     border-radius: 50%;
+}
