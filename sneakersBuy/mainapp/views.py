@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from mainapp.models import Product, Category
+from mainapp.models import Product, Category, Brand
 
 from basketapp.models import Basket
 
@@ -34,7 +34,8 @@ def index(request):
     title = "Главная"
     basket = get_basket(request.user)
     prods = Product.objects.all()
-    context = get_data(title=title, prods=prods, basket=basket)
+    brands = Brand.objects.all()
+    context = get_data(title=title, prods=prods, basket=basket, brands=brands)
     return render(request, 'index.html', context)
 
 
@@ -75,3 +76,4 @@ def product(request, pk):
     same_prods = Product.objects.exclude(pk=pk)
     context = get_data(title=title, prod=prod, same_prods=same_prods, basket=basket)
     return render(request, 'product.html', context)
+

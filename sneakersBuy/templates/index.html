@@ -28,13 +28,45 @@
     </div>
     <!-- Banner Ends Here -->
 
+    <!-- Featured Brands Here -->
+    <div class="featured-items">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h1>Featured Items</h1>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="owl-carousel owl-theme">
+            {% for brand in brands %}
+              <a href="#">
+                <div class="featured-item">
+                  {% if brand.image %}
+                    <img src ="{{ brand.image.url }}"
+                         alt="{{ brand.name }}">
+                    {% else %}
+                    <img src ="{% static 'assets/images/default.png' %}"
+                         alt="нет картинки">
+                  {% endif %}
+                  <h4>{{ brand.name }}</h4>
+                </div>
+              </a>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Featred Brands Here -->
+
     <!-- Featured Starts Here -->
     <div class="featured-items">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <div class="line-dec"></div>
               <h1>Featured Items</h1>
             </div>
           </div>

@@ -23,11 +23,46 @@ class Category(models.Model):
         verbose_name_plural = "Категория"
 
 
+class Brand(models.Model):
+    name = models.CharField(
+        verbose_name="Имя ",
+        max_length=64,
+        unique=True,
+    )
+
+    description = models.TextField(
+        verbose_name="Описание ",
+        blank=True,
+    )
+
+    image = models.ImageField(
+        upload_to='product_images',
+        blank=True,
+        verbose_name="Изображение"
+    )
+
+    is_deleted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Бренд",
+        verbose_name_plural = "Бренды"
+
+
 class Product(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
         verbose_name="категория"
+    )
+
+    brand = models.ForeignKey(
+        Brand,
+        on_delete=models.CASCADE,
+        verbose_name="бренд",
+        default=None,
     )
 
     name = models.CharField(

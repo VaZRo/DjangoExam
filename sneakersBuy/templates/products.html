@@ -7,6 +7,7 @@
 {% block content %}
 <!-- Page Content -->
     <!-- Items Starts Here -->
+
     <div class="featured-page">
       <div class="container">
         <div class="row">
@@ -20,6 +21,21 @@
             </div>
           </div>
                 {% include 'includes/inc_category_menu.html' %}
+        </div>
+      </div>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <div class="section-heading">
+                {% if brands.name %}
+                    <h1>{{brands.name}}</h1>
+                {% else %}
+                    <h1>Featured Items</h1>
+                {% endif %}
+            </div>
+          </div>
+                {% include 'includes/inc_brand_menu.html' %}
         </div>
       </div>
     </div>
