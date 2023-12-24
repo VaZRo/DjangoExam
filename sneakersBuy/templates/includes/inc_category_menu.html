@@ -1,16 +1,15 @@
 <div class="col-md-8 col-sm-12">
     <div id="filters" class="button-group">
-        <button class="btn btn-primary
-    {% if not category %}active{% endif %}">
-            <a href="{% url 'products:index' %}">All Products</a>
+        <button class="btn btn-primary {% if not category %}active{% endif %}">
+            {% if brand %}
+                <a href="{% url 'products:brand' brand_id=brand.pk %}">All Categories</a>
+            {% else %}
+                <a href="{% url 'products:index' %}">All Categories</a>
+            {% endif %}
         </button>
         {% for cat in categories %}
-            <button class="btn btn-primary
-    {% if category == cat %}
-        active
-    {% endif %}
-    ">
-                <a href="{% url 'products:category' cat.pk %}">{{ cat.name }}</a>
+            <button class="btn btn-primary {% if category == cat %}active{% endif %}">
+                <a href="{% if brand %}{% url 'products:category_with_brand' category_pk=cat.pk brand_id=brand.pk %}{% else %}{% url 'products:category' category_pk=cat.pk %}{% endif %}">{{ cat.name }}</a>
             </button>
         {% endfor %}
     </div>

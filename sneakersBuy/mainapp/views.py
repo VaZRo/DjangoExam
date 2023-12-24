@@ -14,10 +14,12 @@ def get_data(**kwargs):
     ]
 
     categories = Category.objects.all()
+    brands = Brand.objects.all()
 
     context = {
         'links_menu': links_menu,
         'categories': categories,
+        'brands': brands,
     }
 
     context.update(**kwargs)
@@ -53,19 +55,25 @@ def contacts(request):
     return render(request, 'contacts.html', context)
 
 
-def products(request, pk=None):
+def products(request, category_pk=None, brand_id=None):
     prods = Product.objects.order_by('price')
     title = "Каталог продуктов"
     context = {}
 
     basket = get_basket(request.user)
 
-    if pk is not None:
-        category = get_object_or_404(Category, pk=pk)
-        prods = Product.objects.filter(category__pk=pk).order_by('price')
-        context = get_data(category=category)
+    category = None
+    brand = None
 
-    context = get_data(title=title, prods=prods, basket=basket, **context)
+    if category_pk is not None:
+        category = get_object_or_404(Category, pk=category_pk)
+        prods = prods.filter(category=category)
+
+    if brand_id is not None:
+        brand = get_object_or_404(Brand, pk=brand_id)
+        prods = prods.filter(brand=brand)
+
+    context = get_data(title=title, prods=prods, basket=basket, category=category, brand=brand)
     return render(request, 'products.html', context)
 
 
@@ -73,7 +81,7 @@ def product(request, pk):
     title = "Продукт"
     prod = Product.objects.get(pk=pk)
     basket = get_basket(request.user)
-    same_prods = Product.objects.exclude(pk=pk)
+    same_prods = Product.objects.exclude(pk=pk).filter(category=prod.category)
     context = get_data(title=title, prod=prod, same_prods=same_prods, basket=basket)
     return render(request, 'product.html', context)
 

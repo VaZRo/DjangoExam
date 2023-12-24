@@ -36,7 +36,7 @@ class Brand(models.Model):
     )
 
     image = models.ImageField(
-        upload_to='product_images',
+        upload_to='brand_images',
         blank=True,
         verbose_name="Изображение"
     )

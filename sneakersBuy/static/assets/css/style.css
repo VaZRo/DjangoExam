@@ -2,6 +2,10 @@
     color: #756f6f;
 }
 
+a:hover {
+    color: #756f6f;
+}
+
 .btn.btn-round:hover{
     color: #756f6f;
 }
